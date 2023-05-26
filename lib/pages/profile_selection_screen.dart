@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/models/profile.dart';
 
@@ -11,8 +9,8 @@ class ProfileSelectionScreen extends StatefulWidget {
 }
 
 class _ProfileSelectionScreenState extends State<ProfileSelectionScreen> {
-  // bool selected = false;
   late dynamic selectedIndex;
+
   final List<Profile> profiles = [
     Profile(
         'https://www.rainforest-alliance.org/wp-content/uploads/2021/06/capybara-square-1-400x400.jpg.webp',
@@ -70,30 +68,28 @@ class _ProfileSelectionScreenState extends State<ProfileSelectionScreen> {
               });
             },
             child: GridTile(
-                footer: Padding(
-                  padding: const EdgeInsets.only(left: 35.0),
-                  child: Text(
-                    profile.name,
-                    style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16),
-                  ),
+              footer: Padding(
+                padding: const EdgeInsets.only(left: 35.0),
+                child: Text(
+                  profile.name,
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16),
                 ),
-                child: AnimatedContainer(
-                  // height: selectedIndex == idx ? 80 : 100,
-                  // width: selectedIndex == idx ? 80 : 100,
-                  duration: Duration(milliseconds: 500),
-                  margin: EdgeInsets.all(selectedIndex == idx ? 40 : 35),
-                  decoration: BoxDecoration(
-                    // color: selectedIndex == idx ? Colors.red : Colors.green,
-                    image: DecorationImage(
-                      image: NetworkImage(profile.profilePicture),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.circular(10),
+              ),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 500),
+                margin: EdgeInsets.all(selectedIndex == idx ? 40 : 35),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(profile.profilePicture),
+                    fit: BoxFit.cover,
                   ),
-                )),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
           );
         }).toList(),
       ),
