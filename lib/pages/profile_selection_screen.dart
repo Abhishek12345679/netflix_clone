@@ -10,7 +10,7 @@ class ProfileSelectionScreen extends StatefulWidget {
 }
 
 class _ProfileSelectionScreenState extends State<ProfileSelectionScreen> {
-  late dynamic selectedIndex = 0;
+  late int? selectedIndex = 0;
 
   final List<Profile> profiles = [
     Profile(

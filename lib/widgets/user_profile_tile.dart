@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:netflix_clone/models/profile.dart';
 
 class UserProfileTile extends StatelessWidget {
-  late final int selectedIndex;
+  late final int? selectedIndex;
   final int currentIndex;
   final Profile profile;
 
