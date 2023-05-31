@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/models/profile.dart';
+import 'package:netflix_clone/widgets/user_profile_tile.dart';
 
 class ProfileSelectionScreen extends StatefulWidget {
   const ProfileSelectionScreen({super.key});
@@ -9,7 +10,7 @@ class ProfileSelectionScreen extends StatefulWidget {
 }
 
 class _ProfileSelectionScreenState extends State<ProfileSelectionScreen> {
-  late dynamic selectedIndex;
+  late dynamic selectedIndex = 0;
 
   final List<Profile> profiles = [
     Profile(
@@ -67,28 +68,10 @@ class _ProfileSelectionScreenState extends State<ProfileSelectionScreen> {
                 selectedIndex = null;
               });
             },
-            child: GridTile(
-              footer: Padding(
-                padding: const EdgeInsets.only(left: 35.0),
-                child: Text(
-                  profile.name,
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16),
-                ),
-              ),
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 500),
-                margin: EdgeInsets.all(selectedIndex == idx ? 40 : 35),
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(profile.profilePicture),
-                    fit: BoxFit.cover,
-                  ),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
+            child: UserProfileTile(
+              currentIndex: idx,
+              profile: profile,
+              selectedIndex: selectedIndex,
             ),
           );
         }).toList(),
