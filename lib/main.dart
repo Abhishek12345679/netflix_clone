@@ -10,8 +10,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: ProfileSelectionScreen(),
+    return MaterialApp(
+      home: const ProfileSelectionScreen(),
+      theme: ThemeData(
+          appBarTheme: const AppBarTheme(backgroundColor: Colors.black),
+          scaffoldBackgroundColor: Colors.black),
     );
   }
 }

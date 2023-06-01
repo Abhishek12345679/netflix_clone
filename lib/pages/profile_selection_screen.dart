@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/models/profile.dart';
+import 'package:netflix_clone/pages/home_screen.dart';
 import 'package:netflix_clone/widgets/user_profile_tile.dart';
 
 class ProfileSelectionScreen extends StatefulWidget {
@@ -63,7 +64,29 @@ class _ProfileSelectionScreenState extends State<ProfileSelectionScreen> {
                 selectedIndex = idx;
               });
             },
-            onTapUp: (_) {
+            onTapUp: (details) async {
+              await Future.delayed(
+                const Duration(milliseconds: 350),
+                () {
+                  setState(() {
+                    selectedIndex = null;
+                  });
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HomeScreen(profile: profile),
+                    ),
+                    (route) => false,
+                  );
+                },
+              );
+            },
+            onLongPress: () {
+              setState(() {
+                selectedIndex = idx;
+              });
+            },
+            onLongPressUp: () {
               setState(() {
                 selectedIndex = null;
               });
